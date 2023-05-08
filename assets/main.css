@@ -192,6 +192,165 @@ body.is-instant:after {
 	transition: none !important;
 }
 
+@keyframes loading-spinner {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.deferred:before {
+	content: '';
+	display: block;
+	width: 4rem;
+	height: 4rem;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -2rem 0 0 -2rem;
+	animation: loading-spinner 1s infinite linear;
+	transition: opacity 0.25s ease;
+	transition-delay: 0.5s;
+	opacity: 0;
+	z-index: -1;
+	background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iOTZweCIgaGVpZ2h0PSI5NnB4IiB2aWV3Qm94PSIwIDAgOTYgOTYiIHpvb21BbmRQYW49ImRpc2FibGUiPjxzdHlsZT5jaXJjbGUge2ZpbGw6IHRyYW5zcGFyZW50OyBzdHJva2U6ICNmZmY7IHN0cm9rZS13aWR0aDogMS41cHg7IH08L3N0eWxlPjxkZWZzPjxjbGlwUGF0aCBpZD0iY29ybmVyIj48cG9seWdvbiBwb2ludHM9IjAsMCA0OCwwIDQ4LDQ4IDk2LDQ4IDk2LDk2IDAsOTYiIC8+PC9jbGlwUGF0aD48L2RlZnM+PGcgY2xpcC1wYXRoPSJ1cmwoI2Nvcm5lcikiPjxjaXJjbGUgY3g9IjQ4IiBjeT0iNDgiIHI9IjMyIi8+PC9nPjwvc3ZnPg==');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 3rem;
+}
+
+.deferred.loading:before {
+	opacity: 0.35;
+	z-index: 0;
+}
+
+.image {
+	display: block;
+	line-height: 0;
+	max-width: 100%;
+	position: relative;
+}
+
+.image .frame {
+	-webkit-backface-visibility: hidden;
+	-webkit-transform: translate3d(0, 0, 0);
+	display: inline-block;
+	max-width: 100%;
+	overflow: hidden;
+	vertical-align: top;
+	width: 100%;
+}
+
+.image .frame img {
+	border-radius: 0 !important;
+	max-width: 100%;
+	vertical-align: top;
+	width: inherit;
+}
+
+.image.full .frame {
+	display: block;
+}
+
+.image.full:first-child .frame {
+	border-top-left-radius: inherit;
+	border-top-right-radius: inherit;
+}
+
+.image.full:last-child .frame {
+	border-bottom-left-radius: inherit;
+	border-bottom-right-radius: inherit;
+}
+
+#image02 .frame {
+	max-width: 100%;
+	width: 247px;
+	border-radius: 100%;
+	border-color: rgba(0,0,0,0.259);
+	border-style: dotted;
+	border-width: 1px;
+}
+
+#image02 img {
+	border-radius: inherit !important;
+	padding: 1.375rem;
+}
+
+#image02 .frame img {
+	transition: transform 0.875s ease, filter 0.875s ease;
+	transform: scale(1.0425);
+}
+
+#image02 .frame:hover img {
+	transform: scale(1);
+}
+
+#image04 .frame {
+	width: 100vw;
+}
+
+#image04 .frame img {
+	transition: transform 0.875s ease, filter 0.875s ease;
+}
+
+#image04 .frame:hover img {
+	transform: scale(1.0425);
+}
+
+#image05 .frame {
+	width: 100vw;
+}
+
+#image05 img {
+	height: 100% !important;
+	object-fit: cover;
+	object-position: center;
+	width: 100% !important;
+}
+
+#image05 .frame img {
+	transition: transform 0.875s ease, filter 0.875s ease;
+}
+
+#image05 .frame:hover img {
+	transform: scale(1.0425);
+}
+
+#image03 .frame {
+	width: 100vw;
+}
+
+#image03 img {
+	height: 100% !important;
+	object-fit: cover;
+	object-position: center;
+	width: 100% !important;
+}
+
+#image03 .frame img {
+	transition: transform 0.875s ease, filter 0.875s ease;
+}
+
+#image03 .frame:hover img {
+	transform: scale(1.0425);
+}
+
+#image01 .frame {
+	width: 100vw;
+}
+
+#image01 .frame img {
+	transition: transform 0.875s ease, filter 0.875s ease;
+	transform: scale(1.0425);
+}
+
+#image01 .frame:hover img {
+	transform: scale(1);
+}
+
 h1, h2, h3, p {
 	direction: var(--site-language-direction);
 	position: relative;
@@ -207,6 +366,7 @@ h1 span[style], h2 span[style], h3 span[style], p span[style], h1 strong, h2 str
 }
 
 h1.style1, h2.style1, h3.style1, p.style1 {
+	text-align: left;
 	color: #6C7551;
 	font-family: 'Stint Ultra Condensed', serif;
 	letter-spacing: 0.575rem;
@@ -442,7 +602,7 @@ h1.style2 span.p:nth-child(n + 2), h2.style2 span.p:nth-child(n + 2), h3.style2 
 	border-bottom-right-radius: inherit;
 }
 
-#container10 {
+.container.style2 {
 	--alignment: left;
 	--flex-alignment: flex-start;
 	--indent-left: 1;
@@ -452,10 +612,14 @@ h1.style2 span.p:nth-child(n + 2), h2.style2 span.p:nth-child(n + 2), h3.style2 
 	min-height: 35rem;
 	align-items: center;
 	justify-content: flex-start;
-	background-color: transparent;
+	background-color: #050505;
+	background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20width%3D%22640%22%20height%3D%22480%22%20viewBox%3D%220%200%20640%20480%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20preserveAspectRatio%3D%22none%22%3E%20%3Cstyle%20type%3D%22text%2Fcss%22%3E%20line%20%7B%20stroke%3A%20rgba(25,25,25,0.502)%3B%20stroke-width%3A%207.01px%3B%20vector-effect%3A%20non-scaling-stroke%3B%20%7D%20%3C%2Fstyle%3E%20%3Cline%20x1%3D%22704.0%22%20y1%3D%22528.0%22%20x2%3D%22381.9355%22%20y2%3D%22286.4516%22%20opacity%3D%221%22%20%2F%3E%20%3Cline%20x1%3D%22512.0%22%20y1%3D%22528.0%22%20x2%3D%22350.9677%22%20y2%3D%22286.4516%22%20opacity%3D%221%22%20%2F%3E%20%3Cline%20x1%3D%22320.0%22%20y1%3D%22528.0%22%20x2%3D%22320.0%22%20y2%3D%22286.4516%22%20opacity%3D%221%22%20%2F%3E%20%3Cline%20x1%3D%22128.0%22%20y1%3D%22528.0%22%20x2%3D%22289.0323%22%20y2%3D%22286.4516%22%20opacity%3D%221%22%20%2F%3E%20%3Cline%20x1%3D%22-64.0%22%20y1%3D%22528.0%22%20x2%3D%22258.0645%22%20y2%3D%22286.4516%22%20opacity%3D%221%22%20%2F%3E%20%3Cline%20x1%3D%22384.0%22%20y1%3D%22288.0%22%20x2%3D%22256.0%22%20y2%3D%22288.0%22%20opacity%3D%221%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22384.0%3B386.2069%3B388.5714%3B391.1111%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22288.0%3B289.6552%3B291.4286%3B293.3333%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22256.0%3B253.7931%3B251.4286%3B248.8889%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22288.0%3B289.6552%3B291.4286%3B293.3333%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%22391.1111%22%20y1%3D%22293.3333%22%20x2%3D%22248.8889%22%20y2%3D%22293.3333%22%20opacity%3D%221%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22391.1111%3B393.8462%3B396.8%3B400.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22293.3333%3B295.3846%3B297.6%3B300.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22248.8889%3B246.1538%3B243.2%3B240.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22293.3333%3B295.3846%3B297.6%3B300.0%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%22400.0%22%20y1%3D%22300.0%22%20x2%3D%22240.0%22%20y2%3D%22300.0%22%20opacity%3D%221%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22400.0%3B403.4783%3B407.2727%3B411.4286%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22300.0%3B302.6087%3B305.4545%3B308.5714%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22240.0%3B236.5217%3B232.7273%3B228.5714%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22300.0%3B302.6087%3B305.4545%3B308.5714%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%22411.4286%22%20y1%3D%22308.5714%22%20x2%3D%22228.5714%22%20y2%3D%22308.5714%22%20opacity%3D%221%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22411.4286%3B416.0%3B421.0526%3B426.6667%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22308.5714%3B312.0%3B315.7895%3B320.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22228.5714%3B224.0%3B218.9474%3B213.3333%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22308.5714%3B312.0%3B315.7895%3B320.0%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%22426.6667%22%20y1%3D%22320.0%22%20x2%3D%22213.3333%22%20y2%3D%22320.0%22%20opacity%3D%221%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22426.6667%3B432.9412%3B440.0%3B448.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22320.0%3B324.7059%3B330.0%3B336.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22213.3333%3B207.0588%3B200.0%3B192.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22320.0%3B324.7059%3B330.0%3B336.0%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%22448.0%22%20y1%3D%22336.0%22%20x2%3D%22192.0%22%20y2%3D%22336.0%22%20opacity%3D%221%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22448.0%3B457.1429%3B467.6923%3B480.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22336.0%3B342.8571%3B350.7692%3B360.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22192.0%3B182.8571%3B172.3077%3B160.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22336.0%3B342.8571%3B350.7692%3B360.0%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%22480.0%22%20y1%3D%22360.0%22%20x2%3D%22160.0%22%20y2%3D%22360.0%22%20opacity%3D%221%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22480.0%3B494.5455%3B512.0%3B533.3333%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22360.0%3B370.9091%3B384.0%3B400.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22160.0%3B145.4545%3B128.0%3B106.6667%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22360.0%3B370.9091%3B384.0%3B400.0%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%22533.3333%22%20y1%3D%22400.0%22%20x2%3D%22106.6667%22%20y2%3D%22400.0%22%20opacity%3D%221%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22533.3333%3B560.0%3B594.2857%3B640.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22400.0%3B420.0%3B445.7143%3B480.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22106.6667%3B80.0%3B45.7143%3B0.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22400.0%3B420.0%3B445.7143%3B480.0%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%22640.0%22%20y1%3D%22480.0%22%20x2%3D%220.0%22%20y2%3D%22480.0%22%20opacity%3D%221%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22640.0%3B704.0%3B704.0%3B704.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22480.0%3B528.0%3B528.0%3B528.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%220.0%3B-64.0%3B-64.0%3B-64.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22480.0%3B528.0%3B528.0%3B528.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22opacity%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%221%3B1%3B0%3B0%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%22381.9355%22%20y1%3D%22286.4516%22%20x2%3D%22381.9355%22%20y2%3D%22193.5484%22%20%2F%3E%20%3Cline%20x1%3D%22350.9677%22%20y1%3D%22286.4516%22%20x2%3D%22350.9677%22%20y2%3D%22193.5484%22%20%2F%3E%20%3Cline%20x1%3D%22320.0%22%20y1%3D%22286.4516%22%20x2%3D%22320.0%22%20y2%3D%22193.5484%22%20%2F%3E%20%3Cline%20x1%3D%22289.0323%22%20y1%3D%22286.4516%22%20x2%3D%22289.0323%22%20y2%3D%22193.5484%22%20%2F%3E%20%3Cline%20x1%3D%22258.0645%22%20y1%3D%22286.4516%22%20x2%3D%22258.0645%22%20y2%3D%22193.5484%22%20%2F%3E%20%3Cline%20x1%3D%22381.9355%22%20y1%3D%22286.4516%22%20x2%3D%22258.0645%22%20y2%3D%22286.4516%22%20%2F%3E%20%3Cline%20x1%3D%22381.9355%22%20y1%3D%22263.2258%22%20x2%3D%22258.0645%22%20y2%3D%22263.2258%22%20%2F%3E%20%3Cline%20x1%3D%22381.9355%22%20y1%3D%22240.0%22%20x2%3D%22258.0645%22%20y2%3D%22240.0%22%20%2F%3E%20%3Cline%20x1%3D%22381.9355%22%20y1%3D%22216.7742%22%20x2%3D%22258.0645%22%20y2%3D%22216.7742%22%20%2F%3E%20%3Cline%20x1%3D%22381.9355%22%20y1%3D%22193.5484%22%20x2%3D%22258.0645%22%20y2%3D%22193.5484%22%20%2F%3E%20%3Cline%20x1%3D%22-64.0%22%20y1%3D%22528.0%22%20x2%3D%22258.0645%22%20y2%3D%22286.4516%22%20opacity%3D%221%22%20%2F%3E%20%3Cline%20x1%3D%22-64.0%22%20y1%3D%22384.0%22%20x2%3D%22258.0645%22%20y2%3D%22263.2258%22%20opacity%3D%221%22%20%2F%3E%20%3Cline%20x1%3D%22-64.0%22%20y1%3D%22240.0%22%20x2%3D%22258.0645%22%20y2%3D%22240.0%22%20opacity%3D%221%22%20%2F%3E%20%3Cline%20x1%3D%22-64.0%22%20y1%3D%2296.0%22%20x2%3D%22258.0645%22%20y2%3D%22216.7742%22%20opacity%3D%221%22%20%2F%3E%20%3Cline%20x1%3D%22-64.0%22%20y1%3D%22-48.0%22%20x2%3D%22258.0645%22%20y2%3D%22193.5484%22%20opacity%3D%221%22%20%2F%3E%20%3Cline%20x1%3D%22256.0%22%20y1%3D%22288.0%22%20x2%3D%22256.0%22%20y2%3D%22192.0%22%20opacity%3D%221%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22256.0%3B253.7931%3B251.4286%3B248.8889%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22288.0%3B289.6552%3B291.4286%3B293.3333%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22256.0%3B253.7931%3B251.4286%3B248.8889%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22192.0%3B190.3448%3B188.5714%3B186.6667%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%22248.8889%22%20y1%3D%22293.3333%22%20x2%3D%22248.8889%22%20y2%3D%22186.6667%22%20opacity%3D%221%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22248.8889%3B246.1538%3B243.2%3B240.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22293.3333%3B295.3846%3B297.6%3B300.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22248.8889%3B246.1538%3B243.2%3B240.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22186.6667%3B184.6154%3B182.4%3B180.0%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%22240.0%22%20y1%3D%22300.0%22%20x2%3D%22240.0%22%20y2%3D%22180.0%22%20opacity%3D%221%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22240.0%3B236.5217%3B232.7273%3B228.5714%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22300.0%3B302.6087%3B305.4545%3B308.5714%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22240.0%3B236.5217%3B232.7273%3B228.5714%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22180.0%3B177.3913%3B174.5455%3B171.4286%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%22228.5714%22%20y1%3D%22308.5714%22%20x2%3D%22228.5714%22%20y2%3D%22171.4286%22%20opacity%3D%221%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22228.5714%3B224.0%3B218.9474%3B213.3333%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22308.5714%3B312.0%3B315.7895%3B320.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22228.5714%3B224.0%3B218.9474%3B213.3333%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22171.4286%3B168.0%3B164.2105%3B160.0%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%22213.3333%22%20y1%3D%22320.0%22%20x2%3D%22213.3333%22%20y2%3D%22160.0%22%20opacity%3D%221%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22213.3333%3B207.0588%3B200.0%3B192.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22320.0%3B324.7059%3B330.0%3B336.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22213.3333%3B207.0588%3B200.0%3B192.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22160.0%3B155.2941%3B150.0%3B144.0%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%22192.0%22%20y1%3D%22336.0%22%20x2%3D%22192.0%22%20y2%3D%22144.0%22%20opacity%3D%221%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22192.0%3B182.8571%3B172.3077%3B160.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22336.0%3B342.8571%3B350.7692%3B360.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22192.0%3B182.8571%3B172.3077%3B160.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22144.0%3B137.1429%3B129.2308%3B120.0%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%22160.0%22%20y1%3D%22360.0%22%20x2%3D%22160.0%22%20y2%3D%22120.0%22%20opacity%3D%221%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22160.0%3B145.4545%3B128.0%3B106.6667%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22360.0%3B370.9091%3B384.0%3B400.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22160.0%3B145.4545%3B128.0%3B106.6667%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22120.0%3B109.0909%3B96.0%3B80.0%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%22106.6667%22%20y1%3D%22400.0%22%20x2%3D%22106.6667%22%20y2%3D%2280.0%22%20opacity%3D%221%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22106.6667%3B80.0%3B45.7143%3B0.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22400.0%3B420.0%3B445.7143%3B480.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22106.6667%3B80.0%3B45.7143%3B0.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%2280.0%3B60.0%3B34.2857%3B0.0%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%220.0%22%20y1%3D%22480.0%22%20x2%3D%220.0%22%20y2%3D%220.0%22%20opacity%3D%221%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%220.0%3B-64.0%3B-64.0%3B-64.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22480.0%3B528.0%3B528.0%3B528.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%220.0%3B-64.0%3B-64.0%3B-64.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%220.0%3B-48.0%3B-48.0%3B-48.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22opacity%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%221%3B1%3B0%3B0%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%22-64.0%22%20y1%3D%22-48.0%22%20x2%3D%22258.0645%22%20y2%3D%22193.5484%22%20opacity%3D%221%22%20%2F%3E%20%3Cline%20x1%3D%22128.0%22%20y1%3D%22-48.0%22%20x2%3D%22289.0323%22%20y2%3D%22193.5484%22%20opacity%3D%221%22%20%2F%3E%20%3Cline%20x1%3D%22320.0%22%20y1%3D%22-48.0%22%20x2%3D%22320.0%22%20y2%3D%22193.5484%22%20opacity%3D%221%22%20%2F%3E%20%3Cline%20x1%3D%22512.0%22%20y1%3D%22-48.0%22%20x2%3D%22350.9677%22%20y2%3D%22193.5484%22%20opacity%3D%221%22%20%2F%3E%20%3Cline%20x1%3D%22704.0%22%20y1%3D%22-48.0%22%20x2%3D%22381.9355%22%20y2%3D%22193.5484%22%20opacity%3D%221%22%20%2F%3E%20%3Cline%20x1%3D%22256.0%22%20y1%3D%22192.0%22%20x2%3D%22384.0%22%20y2%3D%22192.0%22%20opacity%3D%221%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22256.0%3B253.7931%3B251.4286%3B248.8889%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22192.0%3B190.3448%3B188.5714%3B186.6667%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22384.0%3B386.2069%3B388.5714%3B391.1111%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22192.0%3B190.3448%3B188.5714%3B186.6667%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%22248.8889%22%20y1%3D%22186.6667%22%20x2%3D%22391.1111%22%20y2%3D%22186.6667%22%20opacity%3D%221%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22248.8889%3B246.1538%3B243.2%3B240.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22186.6667%3B184.6154%3B182.4%3B180.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22391.1111%3B393.8462%3B396.8%3B400.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22186.6667%3B184.6154%3B182.4%3B180.0%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%22240.0%22%20y1%3D%22180.0%22%20x2%3D%22400.0%22%20y2%3D%22180.0%22%20opacity%3D%221%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22240.0%3B236.5217%3B232.7273%3B228.5714%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22180.0%3B177.3913%3B174.5455%3B171.4286%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22400.0%3B403.4783%3B407.2727%3B411.4286%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22180.0%3B177.3913%3B174.5455%3B171.4286%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%22228.5714%22%20y1%3D%22171.4286%22%20x2%3D%22411.4286%22%20y2%3D%22171.4286%22%20opacity%3D%221%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22228.5714%3B224.0%3B218.9474%3B213.3333%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22171.4286%3B168.0%3B164.2105%3B160.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22411.4286%3B416.0%3B421.0526%3B426.6667%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22171.4286%3B168.0%3B164.2105%3B160.0%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%22213.3333%22%20y1%3D%22160.0%22%20x2%3D%22426.6667%22%20y2%3D%22160.0%22%20opacity%3D%221%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22213.3333%3B207.0588%3B200.0%3B192.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22160.0%3B155.2941%3B150.0%3B144.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22426.6667%3B432.9412%3B440.0%3B448.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22160.0%3B155.2941%3B150.0%3B144.0%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%22192.0%22%20y1%3D%22144.0%22%20x2%3D%22448.0%22%20y2%3D%22144.0%22%20opacity%3D%221%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22192.0%3B182.8571%3B172.3077%3B160.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22144.0%3B137.1429%3B129.2308%3B120.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22448.0%3B457.1429%3B467.6923%3B480.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22144.0%3B137.1429%3B129.2308%3B120.0%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%22160.0%22%20y1%3D%22120.0%22%20x2%3D%22480.0%22%20y2%3D%22120.0%22%20opacity%3D%221%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22160.0%3B145.4545%3B128.0%3B106.6667%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22120.0%3B109.0909%3B96.0%3B80.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22480.0%3B494.5455%3B512.0%3B533.3333%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22120.0%3B109.0909%3B96.0%3B80.0%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%22106.6667%22%20y1%3D%2280.0%22%20x2%3D%22533.3333%22%20y2%3D%2280.0%22%20opacity%3D%221%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22106.6667%3B80.0%3B45.7143%3B0.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%2280.0%3B60.0%3B34.2857%3B0.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22533.3333%3B560.0%3B594.2857%3B640.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%2280.0%3B60.0%3B34.2857%3B0.0%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%220.0%22%20y1%3D%220.0%22%20x2%3D%22640.0%22%20y2%3D%220.0%22%20opacity%3D%221%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%220.0%3B-64.0%3B-64.0%3B-64.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%220.0%3B-48.0%3B-48.0%3B-48.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22640.0%3B704.0%3B704.0%3B704.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%220.0%3B-48.0%3B-48.0%3B-48.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22opacity%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%221%3B1%3B0%3B0%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%22704.0%22%20y1%3D%22-48.0%22%20x2%3D%22381.9355%22%20y2%3D%22193.5484%22%20opacity%3D%221%22%20%2F%3E%20%3Cline%20x1%3D%22704.0%22%20y1%3D%2296.0%22%20x2%3D%22381.9355%22%20y2%3D%22216.7742%22%20opacity%3D%221%22%20%2F%3E%20%3Cline%20x1%3D%22704.0%22%20y1%3D%22240.0%22%20x2%3D%22381.9355%22%20y2%3D%22240.0%22%20opacity%3D%221%22%20%2F%3E%20%3Cline%20x1%3D%22704.0%22%20y1%3D%22384.0%22%20x2%3D%22381.9355%22%20y2%3D%22263.2258%22%20opacity%3D%221%22%20%2F%3E%20%3Cline%20x1%3D%22704.0%22%20y1%3D%22528.0%22%20x2%3D%22381.9355%22%20y2%3D%22286.4516%22%20opacity%3D%221%22%20%2F%3E%20%3Cline%20x1%3D%22384.0%22%20y1%3D%22192.0%22%20x2%3D%22384.0%22%20y2%3D%22288.0%22%20opacity%3D%221%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22384.0%3B386.2069%3B388.5714%3B391.1111%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22192.0%3B190.3448%3B188.5714%3B186.6667%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22384.0%3B386.2069%3B388.5714%3B391.1111%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22288.0%3B289.6552%3B291.4286%3B293.3333%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%22391.1111%22%20y1%3D%22186.6667%22%20x2%3D%22391.1111%22%20y2%3D%22293.3333%22%20opacity%3D%221%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22391.1111%3B393.8462%3B396.8%3B400.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22186.6667%3B184.6154%3B182.4%3B180.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22391.1111%3B393.8462%3B396.8%3B400.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22293.3333%3B295.3846%3B297.6%3B300.0%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%22400.0%22%20y1%3D%22180.0%22%20x2%3D%22400.0%22%20y2%3D%22300.0%22%20opacity%3D%221%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22400.0%3B403.4783%3B407.2727%3B411.4286%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22180.0%3B177.3913%3B174.5455%3B171.4286%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22400.0%3B403.4783%3B407.2727%3B411.4286%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22300.0%3B302.6087%3B305.4545%3B308.5714%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%22411.4286%22%20y1%3D%22171.4286%22%20x2%3D%22411.4286%22%20y2%3D%22308.5714%22%20opacity%3D%221%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22411.4286%3B416.0%3B421.0526%3B426.6667%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22171.4286%3B168.0%3B164.2105%3B160.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22411.4286%3B416.0%3B421.0526%3B426.6667%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22308.5714%3B312.0%3B315.7895%3B320.0%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%22426.6667%22%20y1%3D%22160.0%22%20x2%3D%22426.6667%22%20y2%3D%22320.0%22%20opacity%3D%221%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22426.6667%3B432.9412%3B440.0%3B448.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22160.0%3B155.2941%3B150.0%3B144.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22426.6667%3B432.9412%3B440.0%3B448.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22320.0%3B324.7059%3B330.0%3B336.0%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%22448.0%22%20y1%3D%22144.0%22%20x2%3D%22448.0%22%20y2%3D%22336.0%22%20opacity%3D%221%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22448.0%3B457.1429%3B467.6923%3B480.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22144.0%3B137.1429%3B129.2308%3B120.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22448.0%3B457.1429%3B467.6923%3B480.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22336.0%3B342.8571%3B350.7692%3B360.0%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%22480.0%22%20y1%3D%22120.0%22%20x2%3D%22480.0%22%20y2%3D%22360.0%22%20opacity%3D%221%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22480.0%3B494.5455%3B512.0%3B533.3333%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22120.0%3B109.0909%3B96.0%3B80.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22480.0%3B494.5455%3B512.0%3B533.3333%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22360.0%3B370.9091%3B384.0%3B400.0%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%22533.3333%22%20y1%3D%2280.0%22%20x2%3D%22533.3333%22%20y2%3D%22400.0%22%20opacity%3D%221%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22533.3333%3B560.0%3B594.2857%3B640.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%2280.0%3B60.0%3B34.2857%3B0.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22533.3333%3B560.0%3B594.2857%3B640.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22400.0%3B420.0%3B445.7143%3B480.0%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%22640.0%22%20y1%3D%220.0%22%20x2%3D%22640.0%22%20y2%3D%22480.0%22%20opacity%3D%221%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22640.0%3B704.0%3B704.0%3B704.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%220.0%3B-48.0%3B-48.0%3B-48.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22640.0%3B704.0%3B704.0%3B704.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22480.0%3B528.0%3B528.0%3B528.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22opacity%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%221%3B1%3B0%3B0%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%22381.9355%22%20y1%3D%22286.4516%22%20x2%3D%22258.0645%22%20y2%3D%22286.4516%22%20opacity%3D%220%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22381.9355%3B381.9355%3B381.9355%3B384.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22286.4516%3B286.4516%3B286.4516%3B288.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22258.0645%3B258.0645%3B258.0645%3B256.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22286.4516%3B286.4516%3B286.4516%3B288.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22opacity%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%220%3B0%3B1%3B1%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%22258.0645%22%20y1%3D%22286.4516%22%20x2%3D%22258.0645%22%20y2%3D%22193.5484%22%20opacity%3D%220%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22258.0645%3B258.0645%3B258.0645%3B256.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22286.4516%3B286.4516%3B286.4516%3B288.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22258.0645%3B258.0645%3B258.0645%3B256.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22193.5484%3B193.5484%3B193.5484%3B192.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22opacity%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%220%3B0%3B1%3B1%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%22258.0645%22%20y1%3D%22193.5484%22%20x2%3D%22381.9355%22%20y2%3D%22193.5484%22%20opacity%3D%220%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22258.0645%3B258.0645%3B258.0645%3B256.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22193.5484%3B193.5484%3B193.5484%3B192.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22381.9355%3B381.9355%3B381.9355%3B384.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22193.5484%3B193.5484%3B193.5484%3B192.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22opacity%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%220%3B0%3B1%3B1%22%20%2F%3E%20%3C%2Fline%3E%20%3Cline%20x1%3D%22381.9355%22%20y1%3D%22193.5484%22%20x2%3D%22381.9355%22%20y2%3D%22286.4516%22%20opacity%3D%220%22%3E%20%3Canimate%20attributeName%3D%22x1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22381.9355%3B381.9355%3B381.9355%3B384.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y1%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22193.5484%3B193.5484%3B193.5484%3B192.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22x2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22381.9355%3B381.9355%3B381.9355%3B384.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22y2%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%22286.4516%3B286.4516%3B286.4516%3B288.0%22%20%2F%3E%20%3Canimate%20attributeName%3D%22opacity%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20values%3D%220%3B0%3B1%3B1%22%20%2F%3E%20%3C%2Fline%3E%3C%2Fsvg%3E');
+	background-size: 100% 150%;
+	background-position: center;
+	background-repeat: no-repeat;
 }
 
-#container10 > .wrapper > .inner {
+.container.style2 > .wrapper > .inner {
 	--gutters: 5rem;
 	--padding-horizontal: 6rem;
 	--padding-vertical: 0rem;
@@ -463,31 +627,31 @@ h1.style2 span.p:nth-child(n + 2), h2.style2 span.p:nth-child(n + 2), h3.style2 
 	padding: var(--padding-vertical) var(--padding-horizontal);
 }
 
-#container10 > .wrapper {
+.container.style2 > .wrapper {
 	max-width: 53rem;
 	width: 100%;
 }
 
-#container10.default > .wrapper > .inner > * {
+.container.style2.default > .wrapper > .inner > * {
 	margin-bottom: var(--spacing);
 	margin-top: var(--spacing);
 }
 
-#container10.default > .wrapper > .inner > *:first-child {
+.container.style2.default > .wrapper > .inner > *:first-child {
 	margin-top: 0 !important;
 }
 
-#container10.default > .wrapper > .inner > *:last-child {
+.container.style2.default > .wrapper > .inner > *:last-child {
 	margin-bottom: 0 !important;
 }
 
-#container10.columns > .wrapper > .inner {
+.container.style2.columns > .wrapper > .inner {
 	flex-wrap: wrap;
 	display: flex;
 	align-items: flex-start;
 }
 
-#container10.columns > .wrapper > .inner > * {
+.container.style2.columns > .wrapper > .inner > * {
 	flex-grow: 0;
 	flex-shrink: 0;
 	max-width: 100%;
@@ -495,93 +659,93 @@ h1.style2 span.p:nth-child(n + 2), h2.style2 span.p:nth-child(n + 2), h3.style2 
 	padding: 0 0 0 var(--gutters);
 }
 
-#container10.columns > .wrapper > .inner > * > * {
+.container.style2.columns > .wrapper > .inner > * > * {
 	margin-bottom: var(--spacing);
 	margin-top: var(--spacing);
 }
 
-#container10.columns > .wrapper > .inner > * > *:first-child {
+.container.style2.columns > .wrapper > .inner > * > *:first-child {
 	margin-top: 0 !important;
 }
 
-#container10.columns > .wrapper > .inner > * > *:last-child {
+.container.style2.columns > .wrapper > .inner > * > *:last-child {
 	margin-bottom: 0 !important;
 }
 
-#container10.columns > .wrapper > .inner > *:first-child {
+.container.style2.columns > .wrapper > .inner > *:first-child {
 	margin-left: calc(var(--gutters) * -1);
 }
 
-#container10.default > .wrapper > .inner > .full {
+.container.style2.default > .wrapper > .inner > .full {
 	margin-left: calc(var(--padding-horizontal) * -1);
 	max-width: none !important;
 	width: calc(100% + (var(--padding-horizontal) * 2) + 0.4725px);
 }
 
-#container10.default > .wrapper > .inner > .full:first-child {
+.container.style2.default > .wrapper > .inner > .full:first-child {
 	margin-top: calc(var(--padding-vertical) * -1) !important;
 	border-top-left-radius: inherit;
 	border-top-right-radius: inherit;
 }
 
-#container10.default > .wrapper > .inner > .full:last-child {
+.container.style2.default > .wrapper > .inner > .full:last-child {
 	margin-bottom: calc(var(--padding-vertical) * -1) !important;
 	border-bottom-left-radius: inherit;
 	border-bottom-right-radius: inherit;
 }
 
-#container10.columns > .wrapper > .inner > div > .full {
+.container.style2.columns > .wrapper > .inner > div > .full {
 	margin-left: calc(var(--gutters) * -0.5);
 	max-width: none !important;
 	width: calc(100% + var(--gutters) + 0.4725px);
 }
 
-#container10.columns > .wrapper > .inner > div:first-child > .full {
+.container.style2.columns > .wrapper > .inner > div:first-child > .full {
 	margin-left: calc(var(--padding-horizontal) * -1);
 	width: calc(100% + var(--padding-horizontal) + calc(var(--gutters) * 0.5) + 0.4725px);
 }
 
-#container10.columns > .wrapper > .inner > div:last-child > .full {
+.container.style2.columns > .wrapper > .inner > div:last-child > .full {
 	width: calc(100% + var(--padding-horizontal) + calc(var(--gutters) * 0.5) + 0.4725px);
 }
 
-#container10.columns > .wrapper > .inner > div > .full:first-child {
+.container.style2.columns > .wrapper > .inner > div > .full:first-child {
 	margin-top: calc(var(--padding-vertical) * -1) !important;
 }
 
-#container10.columns > .wrapper > .inner > div > .full:last-child {
+.container.style2.columns > .wrapper > .inner > div > .full:last-child {
 	margin-bottom: calc(var(--padding-vertical) * -1) !important;
 }
 
-#container10.columns > .wrapper > .inner > div:first-child, #container10.columns > .wrapper > .inner > div:first-child > .full:first-child {
+.container.style2.columns > .wrapper > .inner > div:first-child, .container.style2.columns > .wrapper > .inner > div:first-child > .full:first-child {
 	border-top-left-radius: inherit;
 }
 
-#container10.columns > .wrapper > .inner > div:last-child, #container10.columns > .wrapper > .inner > div:last-child > .full:first-child {
+.container.style2.columns > .wrapper > .inner > div:last-child, .container.style2.columns > .wrapper > .inner > div:last-child > .full:first-child {
 	border-top-right-radius: inherit;
 }
 
-#container10.columns > .wrapper > .inner > .full {
+.container.style2.columns > .wrapper > .inner > .full {
 	align-self: stretch;
 	min-height: 35rem;
 }
 
-#container10.columns > .wrapper > .inner > .full:first-child {
+.container.style2.columns > .wrapper > .inner > .full:first-child {
 	border-bottom-left-radius: inherit;
 	border-top-left-radius: inherit;
 }
 
-#container10.columns > .wrapper > .inner > .full:last-child {
+.container.style2.columns > .wrapper > .inner > .full:last-child {
 	border-bottom-right-radius: inherit;
 	border-top-right-radius: inherit;
 }
 
-#container10.columns > .wrapper > .inner > .full > .full:first-child:last-child {
+.container.style2.columns > .wrapper > .inner > .full > .full:first-child:last-child {
 	border-radius: inherit;
 	height: calc(100% + (var(--padding-vertical) * 2));
 }
 
-#container10.columns > .wrapper > .inner > .full > .full:first-child:last-child > * {
+.container.style2.columns > .wrapper > .inner > .full > .full:first-child:last-child > * {
 	border-radius: inherit;
 	height: 100%;
 	position: absolute;
@@ -1036,47 +1200,46 @@ h1.style2 span.p:nth-child(n + 2), h2.style2 span.p:nth-child(n + 2), h3.style2 
 	width: calc(50% + (var(--gutters) / 2));
 }
 
-#container02 {
+.container.style1 {
 	display: flex;
 	width: 100%;
 	align-items: center;
 	justify-content: center;
-	background-color: #FFFFFF;
+	background-color: #000000;
 }
 
-#container02 > .wrapper > .inner {
+.container.style1 > .wrapper > .inner {
 	--gutters: 2rem;
-	--padding-horizontal: 0rem;
-	--padding-vertical: 4.625rem;
+	--padding-vertical: 3.375rem;
 	--spacing: 2.5rem;
 	padding: var(--padding-vertical) var(--padding-horizontal);
 }
 
-#container02 > .wrapper {
+.container.style1 > .wrapper {
 	max-width: var(--width);
 	width: 100%;
 }
 
-#container02.default > .wrapper > .inner > * {
+.container.style1.default > .wrapper > .inner > * {
 	margin-bottom: var(--spacing);
 	margin-top: var(--spacing);
 }
 
-#container02.default > .wrapper > .inner > *:first-child {
+.container.style1.default > .wrapper > .inner > *:first-child {
 	margin-top: 0 !important;
 }
 
-#container02.default > .wrapper > .inner > *:last-child {
+.container.style1.default > .wrapper > .inner > *:last-child {
 	margin-bottom: 0 !important;
 }
 
-#container02.columns > .wrapper > .inner {
+.container.style1.columns > .wrapper > .inner {
 	flex-wrap: wrap;
 	display: flex;
 	align-items: flex-start;
 }
 
-#container02.columns > .wrapper > .inner > * {
+.container.style1.columns > .wrapper > .inner > * {
 	flex-grow: 0;
 	flex-shrink: 0;
 	max-width: 100%;
@@ -1084,92 +1247,92 @@ h1.style2 span.p:nth-child(n + 2), h2.style2 span.p:nth-child(n + 2), h3.style2 
 	padding: 0 0 0 var(--gutters);
 }
 
-#container02.columns > .wrapper > .inner > * > * {
+.container.style1.columns > .wrapper > .inner > * > * {
 	margin-bottom: var(--spacing);
 	margin-top: var(--spacing);
 }
 
-#container02.columns > .wrapper > .inner > * > *:first-child {
+.container.style1.columns > .wrapper > .inner > * > *:first-child {
 	margin-top: 0 !important;
 }
 
-#container02.columns > .wrapper > .inner > * > *:last-child {
+.container.style1.columns > .wrapper > .inner > * > *:last-child {
 	margin-bottom: 0 !important;
 }
 
-#container02.columns > .wrapper > .inner > *:first-child {
+.container.style1.columns > .wrapper > .inner > *:first-child {
 	margin-left: calc(var(--gutters) * -1);
 }
 
-#container02.default > .wrapper > .inner > .full {
+.container.style1.default > .wrapper > .inner > .full {
 	margin-left: calc(var(--padding-horizontal) * -1);
 	max-width: none !important;
 	width: calc(100% + (var(--padding-horizontal) * 2) + 0.4725px);
 }
 
-#container02.default > .wrapper > .inner > .full:first-child {
+.container.style1.default > .wrapper > .inner > .full:first-child {
 	margin-top: calc(var(--padding-vertical) * -1) !important;
 	border-top-left-radius: inherit;
 	border-top-right-radius: inherit;
 }
 
-#container02.default > .wrapper > .inner > .full:last-child {
+.container.style1.default > .wrapper > .inner > .full:last-child {
 	margin-bottom: calc(var(--padding-vertical) * -1) !important;
 	border-bottom-left-radius: inherit;
 	border-bottom-right-radius: inherit;
 }
 
-#container02.columns > .wrapper > .inner > div > .full {
+.container.style1.columns > .wrapper > .inner > div > .full {
 	margin-left: calc(var(--gutters) * -0.5);
 	max-width: none !important;
 	width: calc(100% + var(--gutters) + 0.4725px);
 }
 
-#container02.columns > .wrapper > .inner > div:first-child > .full {
+.container.style1.columns > .wrapper > .inner > div:first-child > .full {
 	margin-left: calc(var(--padding-horizontal) * -1);
 	width: calc(100% + var(--padding-horizontal) + calc(var(--gutters) * 0.5) + 0.4725px);
 }
 
-#container02.columns > .wrapper > .inner > div:last-child > .full {
+.container.style1.columns > .wrapper > .inner > div:last-child > .full {
 	width: calc(100% + var(--padding-horizontal) + calc(var(--gutters) * 0.5) + 0.4725px);
 }
 
-#container02.columns > .wrapper > .inner > div > .full:first-child {
+.container.style1.columns > .wrapper > .inner > div > .full:first-child {
 	margin-top: calc(var(--padding-vertical) * -1) !important;
 }
 
-#container02.columns > .wrapper > .inner > div > .full:last-child {
+.container.style1.columns > .wrapper > .inner > div > .full:last-child {
 	margin-bottom: calc(var(--padding-vertical) * -1) !important;
 }
 
-#container02.columns > .wrapper > .inner > div:first-child, #container02.columns > .wrapper > .inner > div:first-child > .full:first-child {
+.container.style1.columns > .wrapper > .inner > div:first-child, .container.style1.columns > .wrapper > .inner > div:first-child > .full:first-child {
 	border-top-left-radius: inherit;
 }
 
-#container02.columns > .wrapper > .inner > div:last-child, #container02.columns > .wrapper > .inner > div:last-child > .full:first-child {
+.container.style1.columns > .wrapper > .inner > div:last-child, .container.style1.columns > .wrapper > .inner > div:last-child > .full:first-child {
 	border-top-right-radius: inherit;
 }
 
-#container02.columns > .wrapper > .inner > .full {
+.container.style1.columns > .wrapper > .inner > .full {
 	align-self: stretch;
 }
 
-#container02.columns > .wrapper > .inner > .full:first-child {
+.container.style1.columns > .wrapper > .inner > .full:first-child {
 	border-bottom-left-radius: inherit;
 	border-top-left-radius: inherit;
 }
 
-#container02.columns > .wrapper > .inner > .full:last-child {
+.container.style1.columns > .wrapper > .inner > .full:last-child {
 	border-bottom-right-radius: inherit;
 	border-top-right-radius: inherit;
 }
 
-#container02.columns > .wrapper > .inner > .full > .full:first-child:last-child {
+.container.style1.columns > .wrapper > .inner > .full > .full:first-child:last-child {
 	border-radius: inherit;
 	height: calc(100% + (var(--padding-vertical) * 2));
 }
 
-#container02.columns > .wrapper > .inner > .full > .full:first-child:last-child > * {
+.container.style1.columns > .wrapper > .inner > .full > .full:first-child:last-child > * {
 	border-radius: inherit;
 	height: 100%;
 	position: absolute;
@@ -1320,107 +1483,6 @@ h1.style2 span.p:nth-child(n + 2), h2.style2 span.p:nth-child(n + 2), h3.style2 
 	width: 100%;
 }
 
-.image {
-	display: block;
-	line-height: 0;
-	max-width: 100%;
-	position: relative;
-}
-
-.image .frame {
-	-webkit-backface-visibility: hidden;
-	-webkit-transform: translate3d(0, 0, 0);
-	display: inline-block;
-	max-width: 100%;
-	overflow: hidden;
-	vertical-align: top;
-	width: 100%;
-}
-
-.image .frame img {
-	border-radius: 0 !important;
-	max-width: 100%;
-	vertical-align: top;
-	width: inherit;
-}
-
-.image.full .frame {
-	display: block;
-}
-
-.image.full:first-child .frame {
-	border-top-left-radius: inherit;
-	border-top-right-radius: inherit;
-}
-
-.image.full:last-child .frame {
-	border-bottom-left-radius: inherit;
-	border-bottom-right-radius: inherit;
-}
-
-#image04 .frame {
-	width: 100vw;
-}
-
-#image04 .frame img {
-	transition: transform 0.875s ease, filter 0.875s ease;
-}
-
-#image04 .frame:hover img {
-	transform: scale(1.0425);
-}
-
-#image05 .frame {
-	width: 100vw;
-}
-
-#image05 img {
-	height: 100% !important;
-	object-fit: cover;
-	object-position: center;
-	width: 100% !important;
-}
-
-#image05 .frame img {
-	transition: transform 0.875s ease, filter 0.875s ease;
-}
-
-#image05 .frame:hover img {
-	transform: scale(1.0425);
-}
-
-#image03 .frame {
-	width: 100vw;
-}
-
-#image03 img {
-	height: 100% !important;
-	object-fit: cover;
-	object-position: center;
-	width: 100% !important;
-}
-
-#image03 .frame img {
-	transition: transform 0.875s ease, filter 0.875s ease;
-}
-
-#image03 .frame:hover img {
-	transform: scale(1.0425);
-}
-
-#image01 .frame {
-	width: 100vw;
-}
-
-#image01 .frame img {
-	transition: transform 0.875s ease, filter 0.875s ease;
-	transform: scale(1.0425);
-}
-
-#image01 .frame:hover img {
-	transform: scale(1);
-}
-
 .links {
 	display: flex;
 	justify-content: var(--flex-alignment);
@@ -1505,6 +1567,14 @@ h1.style2 span.p:nth-child(n + 2), h2.style2 span.p:nth-child(n + 2), h3.style2 
 		--spacing: 0rem;
 	}
 	
+	#image04 .frame {
+		width: 100vw;
+	}
+	
+	#image01 .frame {
+		width: 100vw;
+	}
+	
 	h1.style1, h2.style1, h3.style1, p.style1 {
 		letter-spacing: 0.503125rem;
 		width: calc(100% + 0.503125rem);
@@ -1562,100 +1632,100 @@ h1.style2 span.p:nth-child(n + 2), h2.style2 span.p:nth-child(n + 2), h3.style2 
 		margin-bottom: 1.875rem !important;
 	}
 	
-	#container10 {
+	.container.style2 {
 		min-height: 26.25rem;
 	}
 	
-	#container10 > .wrapper > .inner {
+	.container.style2 > .wrapper > .inner {
 		--gutters: 5rem;
 		--padding-horizontal: 3rem;
 		--padding-vertical: 8rem;
 		--spacing: 2.5rem;
 	}
 	
-	#container10.columns > .wrapper > .inner {
+	.container.style2.columns > .wrapper > .inner {
 		flex-direction: column !important;
 		flex-wrap: nowrap !important;
 	}
 	
-	#container10.columns > .wrapper > .inner > span {
+	.container.style2.columns > .wrapper > .inner > span {
 		height: 0;
 		margin-top: calc(var(--gutters) * -1);
 		pointer-events: none;
 		visibility: hidden;
 	}
 	
-	#container10.columns > .wrapper > .inner > *:first-child {
+	.container.style2.columns > .wrapper > .inner > *:first-child {
 		margin-left: 0 !important;
 		padding-top: 0 !important;
 	}
 	
-	#container10.columns > .wrapper > .inner > * {
+	.container.style2.columns > .wrapper > .inner > * {
 		padding: calc(var(--gutters) * 0.5) 0 !important;
 	}
 	
-	#container10.columns > .wrapper > .inner > *:last-child {
+	.container.style2.columns > .wrapper > .inner > *:last-child {
 		padding-bottom: 0 !important;
 	}
 	
-	#container10.columns > .wrapper > .inner > div > .full {
+	.container.style2.columns > .wrapper > .inner > div > .full {
 		margin-left: calc(var(--padding-horizontal) * -1);
 		width: calc(100% + (var(--padding-horizontal) * 2) + 0.4725px);
 	}
 	
-	#container10.columns > .wrapper > .inner > div:first-of-type > .full {
+	.container.style2.columns > .wrapper > .inner > div:first-of-type > .full {
 		margin-left: calc(var(--padding-horizontal) * -1);
 		width: calc(100% + (var(--padding-horizontal) * 2) + 0.4725px);
 	}
 	
-	#container10.columns > .wrapper > .inner > div:last-of-type > .full {
+	.container.style2.columns > .wrapper > .inner > div:last-of-type > .full {
 		margin-left: calc(var(--padding-horizontal) * -1);
 		width: calc(100% + (var(--padding-horizontal) * 2) + 0.4725px);
 	}
 	
-	#container10.columns > .wrapper > .inner > div > .full:first-child {
+	.container.style2.columns > .wrapper > .inner > div > .full:first-child {
 		margin-top: calc(var(--gutters) * -0.5) !important;
 	}
 	
-	#container10.columns > .wrapper > .inner > div > .full:last-child {
+	.container.style2.columns > .wrapper > .inner > div > .full:last-child {
 		margin-bottom: calc(var(--gutters) * -0.5) !important;
 	}
 	
-	#container10.columns > .wrapper > .inner > div:first-of-type > .full:first-child {
+	.container.style2.columns > .wrapper > .inner > div:first-of-type > .full:first-child {
 		margin-top: calc(var(--padding-vertical) * -1) !important;
 	}
 	
-	#container10.columns > .wrapper > .inner > div:last-of-type > .full:last-child {
+	.container.style2.columns > .wrapper > .inner > div:last-of-type > .full:last-child {
 		margin-bottom: calc(var(--padding-vertical) * -1) !important;
 	}
 	
-	#container10.columns > .wrapper > .inner > div:first-of-type, #container10.columns > .wrapper > .inner > div:first-of-type > .full:first-child {
+	.container.style2.columns > .wrapper > .inner > div:first-of-type, .container.style2.columns > .wrapper > .inner > div:first-of-type > .full:first-child {
 		border-top-left-radius: inherit;
 		border-top-right-radius: inherit;
 	}
 	
-	#container10.columns > .wrapper > .inner > div:last-of-type, #container10.columns > .wrapper > .inner > div:last-of-type > .full:last-child {
+	.container.style2.columns > .wrapper > .inner > div:last-of-type, .container.style2.columns > .wrapper > .inner > div:last-of-type > .full:last-child {
 		border-bottom-left-radius: inherit;
 		border-bottom-right-radius: inherit;
 	}
 	
-	#container10.columns > .wrapper > .inner > div:first-of-type, #container10.columns > .wrapper > .inner > div:first-of-type > .full:last-child {
+	.container.style2.columns > .wrapper > .inner > div:first-of-type, .container.style2.columns > .wrapper > .inner > div:first-of-type > .full:last-child {
 		border-bottom-left-radius: 0 !important;
 	}
 	
-	#container10.columns > .wrapper > .inner > div:last-of-type, #container10.columns > .wrapper > .inner > div:last-of-type > .full:first-child {
+	.container.style2.columns > .wrapper > .inner > div:last-of-type, .container.style2.columns > .wrapper > .inner > div:last-of-type > .full:first-child {
 		border-top-right-radius: 0 !important;
 	}
 	
-	#container10.columns > .wrapper > .inner > .full {
+	.container.style2.columns > .wrapper > .inner > .full {
 		min-height: 26.25rem;
 	}
 	
-	#container10.columns > .wrapper > .inner > .full > .full:first-child:last-child {
+	.container.style2.columns > .wrapper > .inner > .full > .full:first-child:last-child {
 		height: auto;
 	}
 	
-	#container10.columns > .wrapper > .inner > .full > .full:first-child:last-child > * {
+	.container.style2.columns > .wrapper > .inner > .full > .full:first-child:last-child > * {
 		height: auto;
 		position: relative;
 		width: auto;
@@ -1962,92 +2032,92 @@ h1.style2 span.p:nth-child(n + 2), h2.style2 span.p:nth-child(n + 2), h3.style2 
 	
 	
 	
-	#container02 > .wrapper > .inner {
+	.container.style1 > .wrapper > .inner {
 		--gutters: 2rem;
 		--padding-horizontal: 3rem;
 		--padding-vertical: 7rem;
 		--spacing: 2.125rem;
 	}
 	
-	#container02.columns > .wrapper > .inner {
+	.container.style1.columns > .wrapper > .inner {
 		flex-direction: column !important;
 		flex-wrap: nowrap !important;
 	}
 	
-	#container02.columns > .wrapper > .inner > span {
+	.container.style1.columns > .wrapper > .inner > span {
 		height: 0;
 		margin-top: calc(var(--gutters) * -1);
 		pointer-events: none;
 		visibility: hidden;
 	}
 	
-	#container02.columns > .wrapper > .inner > *:first-child {
+	.container.style1.columns > .wrapper > .inner > *:first-child {
 		margin-left: 0 !important;
 		padding-top: 0 !important;
 	}
 	
-	#container02.columns > .wrapper > .inner > * {
+	.container.style1.columns > .wrapper > .inner > * {
 		padding: calc(var(--gutters) * 0.5) 0 !important;
 	}
 	
-	#container02.columns > .wrapper > .inner > *:last-child {
+	.container.style1.columns > .wrapper > .inner > *:last-child {
 		padding-bottom: 0 !important;
 	}
 	
-	#container02.columns > .wrapper > .inner > div > .full {
+	.container.style1.columns > .wrapper > .inner > div > .full {
 		margin-left: calc(var(--padding-horizontal) * -1);
 		width: calc(100% + (var(--padding-horizontal) * 2) + 0.4725px);
 	}
 	
-	#container02.columns > .wrapper > .inner > div:first-of-type > .full {
+	.container.style1.columns > .wrapper > .inner > div:first-of-type > .full {
 		margin-left: calc(var(--padding-horizontal) * -1);
 		width: calc(100% + (var(--padding-horizontal) * 2) + 0.4725px);
 	}
 	
-	#container02.columns > .wrapper > .inner > div:last-of-type > .full {
+	.container.style1.columns > .wrapper > .inner > div:last-of-type > .full {
 		margin-left: calc(var(--padding-horizontal) * -1);
 		width: calc(100% + (var(--padding-horizontal) * 2) + 0.4725px);
 	}
 	
-	#container02.columns > .wrapper > .inner > div > .full:first-child {
+	.container.style1.columns > .wrapper > .inner > div > .full:first-child {
 		margin-top: calc(var(--gutters) * -0.5) !important;
 	}
 	
-	#container02.columns > .wrapper > .inner > div > .full:last-child {
+	.container.style1.columns > .wrapper > .inner > div > .full:last-child {
 		margin-bottom: calc(var(--gutters) * -0.5) !important;
 	}
 	
-	#container02.columns > .wrapper > .inner > div:first-of-type > .full:first-child {
+	.container.style1.columns > .wrapper > .inner > div:first-of-type > .full:first-child {
 		margin-top: calc(var(--padding-vertical) * -1) !important;
 	}
 	
-	#container02.columns > .wrapper > .inner > div:last-of-type > .full:last-child {
+	.container.style1.columns > .wrapper > .inner > div:last-of-type > .full:last-child {
 		margin-bottom: calc(var(--padding-vertical) * -1) !important;
 	}
 	
-	#container02.columns > .wrapper > .inner > div:first-of-type, #container02.columns > .wrapper > .inner > div:first-of-type > .full:first-child {
+	.container.style1.columns > .wrapper > .inner > div:first-of-type, .container.style1.columns > .wrapper > .inner > div:first-of-type > .full:first-child {
 		border-top-left-radius: inherit;
 		border-top-right-radius: inherit;
 	}
 	
-	#container02.columns > .wrapper > .inner > div:last-of-type, #container02.columns > .wrapper > .inner > div:last-of-type > .full:last-child {
+	.container.style1.columns > .wrapper > .inner > div:last-of-type, .container.style1.columns > .wrapper > .inner > div:last-of-type > .full:last-child {
 		border-bottom-left-radius: inherit;
 		border-bottom-right-radius: inherit;
 	}
 	
-	#container02.columns > .wrapper > .inner > div:first-of-type, #container02.columns > .wrapper > .inner > div:first-of-type > .full:last-child {
+	.container.style1.columns > .wrapper > .inner > div:first-of-type, .container.style1.columns > .wrapper > .inner > div:first-of-type > .full:last-child {
 		border-bottom-left-radius: 0 !important;
 	}
 	
-	#container02.columns > .wrapper > .inner > div:last-of-type, #container02.columns > .wrapper > .inner > div:last-of-type > .full:first-child {
+	.container.style1.columns > .wrapper > .inner > div:last-of-type, .container.style1.columns > .wrapper > .inner > div:last-of-type > .full:first-child {
 		border-top-right-radius: 0 !important;
 	}
 	
-	#container02.columns > .wrapper > .inner > .full > .full:first-child:last-child {
+	.container.style1.columns > .wrapper > .inner > .full > .full:first-child:last-child {
 		height: auto;
 	}
 	
-	#container02.columns > .wrapper > .inner > .full > .full:first-child:last-child > * {
+	.container.style1.columns > .wrapper > .inner > .full > .full:first-child:last-child > * {
 		height: auto;
 		position: relative;
 		width: auto;
@@ -2146,14 +2216,6 @@ h1.style2 span.p:nth-child(n + 2), h2.style2 span.p:nth-child(n + 2), h3.style2 
 		width: auto;
 	}
 	
-	#image04 .frame {
-		width: 100vw;
-	}
-	
-	#image01 .frame {
-		width: 100vw;
-	}
-	
 	#links06 {
 		gap: 1.75rem;
 		flex-direction: column;
@@ -2177,7 +2239,7 @@ h1.style2 span.p:nth-child(n + 2), h2.style2 span.p:nth-child(n + 2), h3.style2 
 		--spacing: 0rem;
 	}
 	
-	#container10 > .wrapper > .inner {
+	.container.style2 > .wrapper > .inner {
 		--spacing: 2.1875rem;
 	}
 	
@@ -2193,7 +2255,7 @@ h1.style2 span.p:nth-child(n + 2), h2.style2 span.p:nth-child(n + 2), h3.style2 
 		--spacing: 0.21875rem;
 	}
 	
-	#container02 > .wrapper > .inner {
+	.container.style1 > .wrapper > .inner {
 		--spacing: 2.125rem;
 	}
 	
@@ -2229,18 +2291,18 @@ h1.style2 span.p:nth-child(n + 2), h2.style2 span.p:nth-child(n + 2), h3.style2 
 		gap: 0rem;
 	}
 	
-	#container10 > .wrapper > .inner {
+	.container.style2 > .wrapper > .inner {
 		--gutters: 3.75rem;
 		--padding-horizontal: 2.25rem;
 		--padding-vertical: 6rem;
 		--spacing: 1.875rem;
 	}
 	
-	#container10 {
+	.container.style2 {
 		min-height: 17.5rem;
 	}
 	
-	#container10.columns > .wrapper > .inner > .full {
+	.container.style2.columns > .wrapper > .inner > .full {
 		min-height: 17.5rem;
 	}
 	
@@ -2265,7 +2327,7 @@ h1.style2 span.p:nth-child(n + 2), h2.style2 span.p:nth-child(n + 2), h3.style2 
 		--spacing: 0.1875rem;
 	}
 	
-	#container02 > .wrapper > .inner {
+	.container.style1 > .wrapper > .inner {
 		--gutters: 1.5rem;
 		--padding-horizontal: 2.25rem;
 		--padding-vertical: 5.25rem;
